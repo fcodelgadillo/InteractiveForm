@@ -215,6 +215,25 @@ function app() {
         });
     }
 
+    /*==================================================
+    Added code to exceed expectations after first review
+    ================================================= */
+
+    // Tabbing trough checkboxes
+    selectorIdGenerator("activities").querySelectorAll('input[type="checkbox"]').forEach(element => {
+        element.addEventListener('focus', () => element.parentNode.classList.add('focus'));
+        element.addEventListener('blur', () => element.parentNode.classList.remove('focus'));
+    });
+
+    // Show different message on email field
+    listenerGenerator(selectorIdGenerator('email'), 'keyup', () => {
+        if (selectorIdGenerator('email').value.length < 1) {
+            selectorIdGenerator('email').parentNode.lastElementChild.textContent = "Email field cannot be empty";
+        } else {
+            selectorIdGenerator('email').parentNode.lastElementChild.textContent = "Email address must be formatted correctly";
+        }
+    })
+    
     /*=======================
     Event Listeners
     ======================= */
